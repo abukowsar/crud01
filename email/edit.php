@@ -30,7 +30,7 @@
  <strong>First Name: *</strong> <input type="text" name="email" value="<?php echo $email; ?>"/><br/>
  <strong>Last Name: *</strong> <input type="text" name="created" value="<?php echo $created; ?>"/><br/>
  <p>* Required</p>
- <input type="submit" name="submit" value="Submit">
+ <input type="submit" name="submit" value="Save">
  </div>
  </form> 
  </body>

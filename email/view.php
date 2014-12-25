@@ -40,7 +40,7 @@
 	// close table>
 	echo "</table>";
 ?>
-<p><a href="new.php">Add a new record</a></p>
+<p><a href="create_email.php">Add a new record</a></p>
 
 </body>
 </html>	
