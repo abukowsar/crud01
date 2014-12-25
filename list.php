@@ -21,7 +21,7 @@ $result = mysqli_query($link, $query);
 //    print_r($row);
 //}
 
-//alternative
+//alternative way
 
 
     //print_r($row);
