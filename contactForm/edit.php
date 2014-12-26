@@ -18,9 +18,8 @@
     <div align="center">|<a href="index.php"> Registration </a>| <a href="view.php">List </a>|  
     </div>
 </div>
-<h2 align="center">Applicant Contact Details</h2> 
-<table border="1" width="70%"  align="center" cellpadding="2" cellspacing="0">
-<tr><td>
+<h2 align="center">Applicant Contact Edit</h2> 
+
  <body>
  <?php 
  // if there are any errors, display them
@@ -29,31 +28,44 @@
  echo '<div style="padding:4px; border:1px solid red; color:red;">'.$error.'</div>';
  }
  ?> 
- 
+ <table border="1" width="70%"  align="center" cellpadding="2" cellspacing="0">
+<tr>
  <form action="" method="post">
  <input type="hidden" name="id" value="<?php echo $id; ?>"/>
  <div>
  <p><strong>ID:</strong> <?php echo $id; ?></p>
 
  
-  <strong>presentAddress: *</strong> <input type="text" name="presentAddress" value="<?php echo $presentAddress; ?>" /><br/>
+  <tr> <td align='left'><strong>presentAddress: *</strong> </td><td><input type="text" name="presentAddress" value="<?php echo $presentAddress; ?>" /><br/></td></tr>
             
-          <strong>permanentAddress: *</strong> <input type="text" name="permanentAddress" value="<?php echo $permanentAddress; ?>" /><br/>
-          <strong>district: *</strong> <select name="district" /><br/>
+         <tr> <td align='left'> <strong>permanentAddress: *</strong> </td><td><input type="text" name="permanentAddress" value="<?php echo $permanentAddress; ?>" /><br/></td></tr>
+          <tr> <td align='left'><strong>district: *</strong> </td><td><select id="district" name="district" /><br/>
           
-          <option value="">Select District</option> 
-<option value='Dhaka' <?php if($contact->district=='Dhaka') echo "selected='selected'"; ?>>Dhaka</option>
-<option value='Comilla' <?php if($contact->district=='Comilla') echo "selected='selected'"; ?>>Comilla</option>
-</select>
+          <option value="" selected="selected">Select District</option> 
+
+
+ 		<option <?php if ($district == 'Dhaka' ) echo 'selected'; ?> value="Dhaka">Dhaka</option>
+            <option <?php if ($district == 'Comilla' ) echo 'selected'; ?> value="Comilla">Comilla</option>
             
-          <strong>homePhone: *</strong> <input type="text" name="homePhone" value="<?php echo $homePhone; ?>" /><br/>
-          <strong>mobile: *</strong> <input type="text" name="mobile" value="<?php echo $mobile; ?>" /><br/>
-            
-          <strong>emergencyContact: *</strong> <input type="text" name="emergencyContact" value="<?php echo $emergencyContact; ?>" /><br/>
-          <strong>Email ID: *</strong> <input type="text" name="Email" value="<?php echo $Email; ?>" /><br/>
-            
-          <strong>alternateEmail: *</strong> <input type="text" name="alternateEmail" value="<?php echo $alternateEmail; ?>" /><br/>
+             <option <?php if ($district == 'Pabna' ) echo 'selected'; ?> value='Pabna'>Pabna</option>
+  <option <?php if ($district == 'Nator' ) echo 'selected'; ?> value='Nator'>Nator</option>
+   <option <?php if ($district == 'Kushtia' ) echo 'selected'; ?> value='Kushtia'>Kushtia</option>
+  <option <?php if ($district == 'Rajshahi' ) echo 'selected'; ?> value='Rajshahi'>Rajshahi</option>
+  
  
+  
+  
+            
+		</select>
+            
+         <tr> <td align='left'> <strong>homePhone: *</strong> </td><td><input type="text" name="homePhone" value="<?php echo $homePhone; ?>" /><br/></td></tr>
+        <tr> <td align='left'>  <strong>mobile: *</strong> </td><td><input type="text" name="mobile" value="<?php echo $mobile; ?>" /><br/></td></tr>
+            
+          <tr> <td align='left'><strong>emergencyContact: *</strong> </td><td><input type="text" name="emergencyContact" value="<?php echo $emergencyContact; ?>" /><br/></td></tr>
+          <tr> <td align='left'><strong>Email ID: *</strong></td><td> <input type="text" name="Email" value="<?php echo $Email; ?>" /><br/></td></tr>
+            
+         <tr> <td align='left'> <strong>alternateEmail: *</strong> </td><td><input type="text" name="alternateEmail" value="<?php echo $alternateEmail; ?>" /><br/></td></tr>
+ <tr> <td height="68" colspan="2" align="center">
  <p>* Required</p>
  <input type="submit" name="submit" value="Save">
  </div>

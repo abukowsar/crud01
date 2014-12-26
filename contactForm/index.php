@@ -44,6 +44,10 @@ function renderForm($presentAddress, $permanentAddress, $district, $homePhone, $
         <!-- <option value="<?php echo $district; ?>" -->
          <option value='Dhaka'>Dhaka</option>
   <option value='Comilla'>Comilla</option>
+   <option value='Pabna'>Pabna</option>
+  <option value='Nator'>Nator</option>
+   <option value='Kushtia'>Kushtia</option>
+  <option value='Rajshahi'>Rajshahi</option>
   
          </select><br/></td></tr>
             
