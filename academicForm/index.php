@@ -26,7 +26,7 @@ function renderForm($level, $exam, $subject, $institute, $type, $result, $scale,
     ?>
 
  <div class='formbox'>
-    <div align="center">|<a href="index.php"> Registration </a>| <a href="view.php">List </a>|  
+    <div align="center"><a href="../index.html"> Home </a>|<a href="index.php"> Registration </a>| <a href="view.php">List </a>|  
     </div>
 </div>
 <h2 align="center">Add Academic Information</h2> 

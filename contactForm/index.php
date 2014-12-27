@@ -26,7 +26,7 @@ function renderForm($presentAddress, $permanentAddress, $district, $homePhone, $
     ?>
 
  <div class='formbox'>
-    <div align="center">|<a href="index.php"> Registration </a>| <a href="view.php">List </a>|  
+    <div align="center"><a href="../index.html"> Home </a>|<a href="index.php"> Registration </a>| <a href="view.php">List </a>|  
     </div>
 </div>
 <h2 align="center">Applicant Contact Details</h2> 
