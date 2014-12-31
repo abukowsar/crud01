@@ -46,7 +46,7 @@
           <tr> <td align='left'><strong>phoneHome: *</strong> </td><td><input type="text" name="phoneHome" value="<?php echo $phoneHome; ?>" /><br/></td></tr>
           <tr> <td align='left'><strong>mobile ID: *</strong></td><td> <input type="text" name="mobile" value="<?php echo $mobile; ?>" /><br/></td></tr>
             
-         <tr> <td align='left'> <strong>email: *</strong> </td><td><input type="text" name="email" value="<?php echo $email; ?>" /><br/></td></tr>
+         <tr> <td align='left'> <strong>email: *</strong> </td><td><input type="email" name="email" value="<?php echo $email; ?>" /><br/></td></tr>
  <tr> <td height="68" colspan="2" align="center">
  <p>* Required</p>
  <input type="submit" name="submit" value="Save">

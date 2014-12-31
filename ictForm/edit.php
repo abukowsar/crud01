@@ -42,7 +42,8 @@
 
 
  		<option <?php if ($category == 'ICT' ) echo 'selected'; ?> value="ICT">ICT</option>
-            
+            <option <?php if ($category == 'Accounting' ) echo 'selected'; ?> value="Accounting">Accounting</option>
+            <option <?php if ($category == 'Data Entry' ) echo 'selected'; ?> value="Data Entry">Data Entry</option>
   
  
   

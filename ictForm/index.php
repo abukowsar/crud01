@@ -38,7 +38,10 @@ function renderForm($category, $description, $activities, $error)
             <td align='left'><strong>Category: *</strong> </td><td><select name="category"> 
         <!-- <option value="<?php echo $category; ?>" -->
          <option value='ICT'>ICT</option>
-  
+                    <option value='Accounting'>Accounting</option>
+                    <option value='Data Entry'>Data Entry</option>
+
+
   
          </select><br/></td></tr>
             

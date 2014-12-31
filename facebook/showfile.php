@@ -1,10 +1,10 @@
 <?php
 
 /*** some basic sanity checks ***/
-if(filter_has_var(INPUT_GET, "id") !== false && filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) !== false)
+if(filter_has_var(INPUT_GET, "image_id") !== false && filter_input(INPUT_GET, 'image_id', FILTER_VALIDATE_INT) !== false)
     {
     /*** assign the image id ***/
-    $image_id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+    $image_id = filter_input(INPUT_GET, "image_id", FILTER_SANITIZE_NUMBER_INT);
     try     {
         /*** connect to the database ***/
         $dbh = new PDO("mysql:host=localhost;dbname=students", 'root', '');
@@ -13,7 +13,7 @@ if(filter_has_var(INPUT_GET, "id") !== false && filter_input(INPUT_GET, 'id', FI
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         /*** The sql statement ***/
-        $sql = "SELECT pic2 FROM facebook WHERE id=$id";
+        $sql = "SELECT image, image_type FROM testblob WHERE image_id=$image_id";
 
         /*** prepare the sql ***/
         $stmt = $dbh->prepare($sql);
