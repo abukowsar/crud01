@@ -1,0 +1,127 @@
+<form action="imageUpload.php" method="post" enctype="multipart/form-data">
+<fieldset>
+<legend>Image Upload</legend>
+<label for="userFile">Small image to upload: </label>
+<input type="file" size="40" name="userFile" id="userFile"/><br />
+<br />
+<label for="altText">Description of image</label>
+<input type="text" size="60" name="altText" id="altText"/><br />
+<br />
+<input type="submit" value="Upload File" />
+</fieldset>
+</form>
+Image Upload
+Small image to upload:  
+
+Description of image 
+
+
+Remember how the uploaded file is stored in the TEMPDIR (/tmp on Unix) on the server and automatically deleted when the request ends. To preserve the file the php code must copy it to a suitable location on the server. In this example the uploaded image is writen into a MySQL table together with other useful information.
+
+imageUpload.php
+
+<body>
+<h1>Uploading Images to MySQL</h1><p>
+<?php
+if ( !isset($_FILES['userFile']['type']) ) {
+   die('<p>No image submitted</p></body></html>');
+}
+?>
+You submitted this file:<br /><br />
+Temporary name: <?php echo $_FILES['userFile']['tmp_name'] ?><br />
+Original name: <?php echo $_FILES['userFile']['name'] ?><br />
+Size: <?php echo $_FILES['userFile']['size'] ?> bytes<br />
+Type: <?php echo $_FILES['userFile']['type'] ?></p>
+
+<?php
+require '/home/mkg01/include/mysql.php';
+// Validate uploaded image file
+if ( !preg_match( '/gif|png|x-png|jpeg/', $_FILES['userFile']['type']) ) {
+   die('<p>Only browser compatible images allowed</p></body></html>');
+} else if ( strlen($_POST['altText']) < 9 ) {
+   die('<p>Please provide meaningful alternate text</p></body></html>');
+} else if ( $_FILES['userFile']['size'] > 16384 ) {
+   die('<p>Sorry file too large</p></body></html>');
+// Connect to database
+} else if ( !($link=mysql_connect($host, $user, $passwd)) ) {
+   die('<p>Error connecting to database</p></body></html>');
+} else if ( !(mysql_select_db($dbName)) ) {
+   die('<p>Error selecting database</p></body></html>');
+// Copy image file into a variable
+} else if ( !($handle = fopen ($_FILES['userFile']['tmp_name'], "r")) ) {
+   die('<p>Error opening temp file</p></body></html>');
+} else if ( !($image = fread ($handle, filesize($_FILES['userFile']['tmp_name']))) ) {
+   die('<p>Error reading temp file</p></body></html>');
+} else {
+   fclose ($handle);
+   // Commit image to the database
+   $image = mysql_real_escape_string($image);
+   $alt = htmlentities($_POST['altText']);
+   $query = 'INSERT INTO image (type,name,alt,img) VALUES ("' . $_FILES['userFile']['type'] . '","' . $_FILES['userFile']['name']  . '","' . $alt  . '","' . $image . '")';
+   if ( !(mysql_query($query,$link)) ) {
+      die('<p>Error writing image to database</p></body></html>');
+   } else {
+      die('<p>Image successfully copied to database</p></body></html>');
+   }
+}
+?>
+</body>
+The table image has five columns
+
+Row	Field	Type	Null	Key	Default	Extra
+1	 id	 int(10) unsigned	 	 PRI	 	 auto_increment
+2	 type	 varchar(64)	 YES	 	 	 
+3	 name	 varchar(64)	 YES	 	 	 
+4	 alt	 text	 YES	 	 	 
+5	 img	 blob	 YES	 	 	 
+This is much as we have seen before.
+
+The points to note are:
+
+id is the unique identifier
+the mime type is stored with the image as will be useful in retrieving the image
+the image description will be used as alternate text when displaying the image
+The alt text is HTML encoded to prevent SQL injection
+the image is read from the file in /tmp into $image
+$image is escaped before writing to a MySQL blob
+Having loaded all images into MySQL we need a way to retrieve them...
+
+imageShow.php
+
+<snip>
+<?php
+require '/home/mkg01/include/mysql.php';
+if ( !($link=mysql_connect($host, $user, $passwd)) ) {
+   die('<p>Error connecting to database</p></body></html>');
+} else if ( !(mysql_select_db($dbName)) ) {
+   die('<p>Error selecting database</p></body></html>');
+} else {
+   $query = "SELECT id,name,alt FROM image";
+   if ( !($result = mysql_query($query,$link)) ) {
+      die('<p>Error reading database</p></body></html>');
+   } else {
+      for ( $i = 0 ; $i < mysql_num_rows($result) ; $i++ ) {
+        $row = mysql_fetch_assoc($result);
+        echo '<img src="getImage.php?id=' . $row['id'] . '" alt="' . $row['alt'] . '" title="' . $row['name']  .'"/>  ' . "\n";
+      }
+   }
+}
+?>
+</snip>
+Creates a simple page of XHTML <img /> tags.
+The src of each image is getImage.php.
+
+getImage.php
+
+<?php
+require '/home/mkg01/include/mysql.php';
+$link = mysql_connect($host, $user, $passwd);
+mysql_select_db($dbName);
+$query = 'SELECT type,img FROM image WHERE id="' . $_GET['id'] . '"';
+$result = mysql_query($query,$link);
+$row = mysql_fetch_assoc($result);
+header('Content-Type: ' . $row['type']);
+echo $row['img'];
+?>
+The GET query provides the filename of the image to read from MySQL. This also is used to determine the image type so that the appropriate header is sent.
+
