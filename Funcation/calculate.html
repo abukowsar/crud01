@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Calculator</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+<head>
+<body>
+
+
+<div class="panel panel-primary">
+<div class="panel-heading" align="center"><h2>Calculator</h2></div>
+    
+<div class="panel-body" align="center">
+<table width="40%" height="151" align="center" class="table table-condensed">
+
+
+<form action="result.php" method="post" align="center">
+
+
+        <tr>
+   <td> Enter number 1</td><td width="3%">:</td>
+   <td width="85%"><input type="number" name="first" class="form-control" placeholder="Text input"/></td>
+    </tr><tr>
+        <td> Enter number 2</td><td>:</td><td><input type="number" name="second" class="form-control" placeholder="Text input"/></td>
+    </tr>
+   
+
+<tr>
+
+<td><td></td><td>
+<label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="add" value="add"> Add
+</label>
+<label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="subtract" value="subtract"> Substract
+</label>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="multiple" value="multiple"> Multiplication
+    </label>
+<label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="divide" value="divide"> Division
+</label>
+
+
+   </tr>
+   <tr><td></td> <td></td> <td><input type="submit" name="result" class="btn btn-default"/></td></tr>
+    </form>
+</table>
+
+</div>
+</div>
+
+</body>
+</html>

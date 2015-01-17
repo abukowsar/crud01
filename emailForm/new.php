@@ -47,8 +47,8 @@ include('connect-db.php');
 if (isset($_POST['submit']))
 {
     // get form data, making sure it is valid
-    $email = mysql_real_escape_string(htmlspecialchars($_POST['email']));
-    $created = mysql_real_escape_string(htmlspecialchars($_POST['created']));
+    $email = (htmlspecialchars($_POST['email']));
+    $created = (htmlspecialchars($_POST['created']));
 
     // check to make sure both fields are entered
     if ($email == '' || $created == '')

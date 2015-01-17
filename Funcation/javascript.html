@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Math Operations</title>
+
+<script>
+function math()
+{
+
+if (document.form.add.checked == true)
+
+{
+var num1=document.form.v1.value;
+var num2=document.form.v2.value;
+var num3=Number(num1)+Number(num2);
+alert("Sum of two numbers is: "+num3);
+}
+
+else if(document.form.sub.checked == true)
+
+{
+var num1=document.form.v1.value;
+var num2=document.form.v2.value;
+var num3=Number(num1)-Number(num2);
+alert("Result is: "+num3);
+}
+
+else if(document.form.mul.checked == true)
+
+{
+var num1=document.form.v1.value;
+var num2=document.form.v2.value;
+var num3=Number(num1)*Number(num2);
+alert("Result is: "+num3);
+}
+
+else if(document.form.div.checked == true)
+
+{
+var num1=document.form.v1.value;
+var num2=document.form.v2.value;
+var num3=Number(num1)/Number(num2);
+alert("Result is: "+num3);
+}
+
+}
+</script>
+</head>
+<body>
+
+<form name="form">
+Value1:
+<input type="number" name="v1">
+Value2:
+<input type="number" name="v2">
+
+<br>
+
+<input type="radio" name="add">
+Addition
+
+<br>
+
+<input type="radio" name="sub">
+Subtraction
+
+<br>
+
+<input type="radio" name="mul">
+Multiplication
+
+<br>
+
+<input type="radio" name="div">
+Division
+
+<br>
+
+<input type="submit" value="Calculate" onclick="math();">
+/
+<input type="reset" value="Clear">
+</form>
+</html>

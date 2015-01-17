@@ -7,7 +7,7 @@
  // Database Variables (edit with your own server information)
  $server = 'localhost';
  $user = 'root';
- $pass = 'lict@2';
+ $pass = '';
  $db = 'students';
  
  // Connect to Database
