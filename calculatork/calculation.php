@@ -1,9 +1,7 @@
 <?php
     session_start();
 
-    
-
-        if (empty($_POST['number1']) && empty($_POST['number2'])) {
+            if (empty($_POST['number1']) && empty($_POST['number2'])) {
             $_SESSION['msg']="Input Number 1 & Number 2";
             header('location: calculator.php');
         }
@@ -27,15 +25,22 @@
                 $_SESSION['result']=add($_POST['number1'], $_POST['number2']);
                 header('location: calculator.php');
 				
-            } elseif ($_POST['calculation'] == 'subtract') {
+            }
+			
+			elseif ($_POST['calculation'] == 'subtract') {
                 $_SESSION['result']=subtract($_POST['number1'], $_POST['number2']);
                 header('location: calculator.php');
 				
-            } elseif ($_POST['calculation'] == 'divide') {
+            } 
+			
+			
+			elseif ($_POST['calculation'] == 'divide') {
                 $_SESSION['result']=divide($_POST['number1'], $_POST['number2']);
                 header('location: calculator.php');
 				
-            } elseif ($_POST['calculation'] == 'multiply') {
+            } 
+			
+			elseif ($_POST['calculation'] == 'multiply') {
                 $_SESSION['result']=multiply($_POST['number1'], $_POST['number2']);
                 header('location: calculator.php');
             }

@@ -24,7 +24,7 @@
                          <br/>
                         <?php if(isset($_SESSION['result'])){?>
                             <div class="alert alert-success text-center">
-                                <?php   echo "Calculation Result: <strong>".$_SESSION['result']."</strong>"; 
+                                <?php   echo "<strong>Calculation Result: ".$_SESSION['result']."</strong>"; 
 								session_unset();
 								session_destroy(); 
 								?>
@@ -60,14 +60,15 @@
                             
                     
                 </form>
-            </div>
-        </div>
-    </div>
-  </div>
-    </div>
-    </div>
-    </div>
+               
+       
+
+    
+    
 </section>
+</div>
+</div>
+</div>
 <footer class="container">
 
 </footer>
